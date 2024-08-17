@@ -9,8 +9,9 @@ export default function Home() {
         <EditorComponent />
       </div>
       <footer className="flex justify-center items-center w-full py-4 ">
-        Made with ❤️ by <Link href={"https://www.youtube.com/@CodingWithMrM"}
+        Made with ❤️ by  <Link href={"https://www.youtube.com/@CodingWithMrM"}
           target="_blank"
+          className='pl-1'
         >
           Coding With Mr.M
         </Link>
