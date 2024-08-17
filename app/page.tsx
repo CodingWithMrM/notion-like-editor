@@ -15,6 +15,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
+            f
             By{" "}
             <Image
               src="/vercel.svg"
