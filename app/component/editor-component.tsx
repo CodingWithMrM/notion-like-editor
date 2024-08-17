@@ -63,7 +63,7 @@ const EditorComponent = () => {
     const doc = new Y.Doc();
 
     const provider = new YPartyKitProvider(
-        'coding-with-mr.m-doc',
+        "blocknote-dev.yousefed.partykit.dev",
         'notion-like-edior',
         doc,
     )
@@ -86,12 +86,11 @@ const EditorComponent = () => {
             collaboration: {
                 provider,
                 fragment: doc.getXmlFragment('coding-with-mr-docs'),
-                // user: users
-
                 user: randomUser  // Pass the random user
 
             }
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialContent])
 
 
@@ -100,7 +99,14 @@ const EditorComponent = () => {
 
 
     if (editor === undefined) {
-        return 'loading content'
+        return (
+            <main className="flex flex-col h-full animate-pulse">
+                <div className="flex-grow p-24 h-64 bg-gray-500 rounded">
+                </div>
+                <footer className="flex justify-center items-center w-full py-4 h-16 bg-gray-500 rounded">
+                </footer>
+            </main>
+        )
     }
 
 
