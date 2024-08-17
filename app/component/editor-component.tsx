@@ -6,7 +6,6 @@ import '@blocknote/core/fonts/inter.css';
 import '@blocknote/mantine/style.css';
 import { Block, BlockNoteEditor, PartialBlock } from '@blocknote/core';
 import * as Y from 'yjs';
-import { WebrtcProvider } from 'y-webrtc'
 import YPartyKitProvider from "y-partykit/provider";
 
 
@@ -30,6 +29,21 @@ const EditorComponent = () => {
 
 
 
+    const users = [
+        {
+            name: 'Coding With Mr.M',
+            color: 'yellow'
+        },
+        {
+            name: 'Coding With Mr.M2',
+            color: 'Blue'
+        },
+        {
+            name: 'Coding With Mr.M3',
+            color: 'red'
+        },
+    ]
+
     const uploadFile = async (file: File) => {
         const body = new FormData();
         body.append('file', file);
@@ -47,7 +61,6 @@ const EditorComponent = () => {
     }
 
     const doc = new Y.Doc();
-    // const provider = new WebrtcProvider('coding-with-mr.m-doc', doc);
 
     const provider = new YPartyKitProvider(
         'coding-with-mr.m-doc',
@@ -55,6 +68,12 @@ const EditorComponent = () => {
         doc,
     )
 
+
+    const getRandomUser = () => {
+        const randomIndex = Math.floor(Math.random() * users.length);
+        return users[randomIndex];
+    };
+    const randomUser = getRandomUser();
 
     const editor = useMemo(() => {
         if (initialContent === 'loading') {
@@ -67,10 +86,10 @@ const EditorComponent = () => {
             collaboration: {
                 provider,
                 fragment: doc.getXmlFragment('coding-with-mr-docs'),
-                user: {
-                    name: 'Codign With Mr.M',
-                    color: 'red'
-                }
+                // user: users
+
+                user: randomUser  // Pass the random user
+
             }
         })
     }, [initialContent])
