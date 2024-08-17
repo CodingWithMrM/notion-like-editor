@@ -31,3 +31,8 @@ body {
     text-wrap: balance;
   }
 }
+
+.bn-editor {
+  height: calc(100vh - 10rem) !important;
+  overflow-y: auto;
+}
